@@ -400,7 +400,8 @@ def build_page(client: chat_client.ChatClient) -> gr.Blocks:
                     with gr.TabItem("Hide All Settings", id=3) as hide_all_settings:
                         gr.Markdown("")
 
-        page.load(logger.read_logs, None, logs, every=1)
+        timer = gr.Timer(value=1)
+        timer.tick(logger.read_logs, None, logs)
 
         """ This helper function runs the initialization tasks of the chat application, if needed. """
 
